@@ -1,0 +1,287 @@
+@import url("reset.css");
+@import "color.css";
+
+body {
+  background-color: var(--background-color);
+  font-family: Armata;
+  display: flex;
+  flex-direction: column;
+}
+
+.upper-header {
+  display: flex;
+  height: 96px;
+  padding: 10px 30px;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--accent-color);
+
+  img {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+  }
+}
+
+.log-out {
+  display: flex;
+  padding: 18px 0px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  label {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  img {
+    width: 30px;
+    height: 25px;
+  }
+}
+
+.log-out:hover {
+  font-weight: bolder;
+}
+
+.lower-header {
+  display: flex;
+  height: 76px;
+  padding: 30px 20px;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+  color: black;
+  font-family: Armata;
+  font-size: 40px;
+}
+
+main  {
+  display: flex;
+  height: 945px;
+  padding: 50px 40px 10px 40px;
+  align-items: center;
+  gap: 40px;
+}
+
+.ws-container-header {
+  display: flex;
+  padding: 20px 50px 20px 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.day-selection {
+  display: flex;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.day-nav-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 16px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: 0.2s ease;
+
+  img {
+    width: 20px;
+    height: 27px;
+  }
+}
+
+.day-nav-button:hover {
+  border-radius: 100%;
+  background: white;
+}
+
+.day-nav-button:active {
+  background: var(--accent-color);
+}
+
+.days {
+  display: flex;
+  padding: 0 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  p {
+    color: var(--secondary-text);
+    text-align: center;
+    font-family: Armata;
+    font-size: 36px;
+    cursor: pointer;
+  }
+
+  p:hover {
+    color: black;
+  }
+
+  p.selected {
+    color: black;
+    text-align: center;
+    font-family: Armata;
+    font-size: 36px;
+    text-decoration-line: underline;
+    text-decoration-skip-ink: none;
+  }
+}
+
+.new-ws-button {
+  background-color: var(--accent-color);
+  border-radius: 15px;
+  border: 5px solid var(--accent-color);
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: 0.2s ease;
+
+  img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .plus-orange {
+    position: absolute;
+    opacity: 0;
+  }
+
+  p {
+    color: white;
+    text-align: center;
+    font-family: Armata;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 50% */
+    letter-spacing: 0.4px;
+  }
+}
+
+.new-ws-button:hover {
+  background-color: white;
+  border: 5px solid white;
+  cursor: pointer;
+
+  .plus-orange {
+    opacity: 1;
+  }
+
+  p {
+    color: var(--accent-color);
+  }
+}
+
+.new-ws-button:active {
+  border-color: var(--accent-color);
+
+  .plus-orange {
+    opacity: 1;
+  }
+
+  p {
+    color: var(--accent-color);
+  }
+}
+
+.plus-container {
+  display: block;
+}
+
+.table-container {
+  width: 90%;
+  margin: 10px auto;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  tr {
+    border-bottom: 1px solid var(--secondary-text);
+    text-align: center;
+    font-size: 24px;
+    transition: 0.2s ease;
+  }
+
+  th,
+  td {
+    vertical-align: top;
+    font-size: 24px;
+    text-align: center;
+    width: fit-content;
+  }
+  th {
+    padding: 10px 10px 25px 10px;
+  }
+
+  td {
+    padding: 10px;
+    color: var(--secondary-text);
+  }
+
+  tr :nth-child(1),
+  tr :nth-child(4),
+  tr :nth-child(5) {
+    text-align: left;
+  }
+
+  tr :nth-child(1) {
+    width: 30%;
+  }
+
+  tr :nth-child(6),
+  tr :nth-child(7) {
+    text-align: right;
+  }
+
+  tbody tr:hover {
+    background: var(--accent-color-transparent);
+    cursor: pointer;
+  }
+
+  tbody :last-child {
+    border-bottom: none;
+  }
+
+  tbody .open {
+    display: inline-flex;
+    align-content: center;
+    width: auto;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    background: var(--open-workshop-background);
+    color: var(--open-workshop-font);
+  }
+
+  tbody .full {
+    display: inline-flex;
+    width: auto;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    background: var(--close-workshop-background);
+    color: var(--close-workshop-font);
+  }
+}
