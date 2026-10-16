@@ -1,0 +1,10 @@
+:root {
+  --accent-color: #ff7c35;
+  --accent-color-transparent: rgba(255, 124, 53, 0.1);
+  --background-color: #fff5e5;
+  --open-workshop-background: #beffc9;
+  --open-workshop-font: #0eba2b;
+  --close-workshop-background: #f9b0b0;
+  --close-workshop-font: #e01e1e;
+  --secondary-text: #6a6a74;
+}
