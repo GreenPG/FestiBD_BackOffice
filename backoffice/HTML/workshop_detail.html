@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FestiBD Admin</title>
+    <link href="../CSS/reset.css" rel="stylesheet" />
+    <link href="../CSS/workshop_detail.css" rel="stylesheet" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../assets/logo-256x256.ico"
+    />
+  </head>
+  <body>
+    <header>
+      <section class="upper-header">
+        <img src="../assets/logo-256x256.ico" alt="FestiBD logo" />
+        <section class="log-out">
+          <label for="log-out-button">Log out</label>
+          <img
+            src="../assets/rectangle.portrait.and.arrow.forward.svg"
+            alt="Log Out Button"
+          />
+        </section>
+      </section>
+      <section class="lower-header">
+        <button type="button">
+          <img src="../assets/arrow.left.svg" alt="Back button" />
+        </button>
+        <h1>Drawing A Storyboard</h1>
+      </section>
+    </header>
+    <main>
+      <section class="info-section">
+        <h2>Infos</h2>
+        <form class="detail-container">
+          <div class="form-header">
+            <button type="button">
+              <img src="../assets/pencil.line.svg" alt="Edit button" />
+              <p>Edit</p>
+            </button>
+          </div>
+          <div class="info-row">
+            <div class="input-container">
+              <label for="category">Category</label>
+              <select name="category" disabled>
+                <option value="">Select a category</option>
+              </select>
+            </div>
+            <div class="input-container">
+              <label for="capacity">Capacity</label>
+              <input
+                type="number"
+                name="capacity"
+                value=""
+                placeholder="Workshop capacity"
+                min="0"
+                disabled
+              />
+            </div>
+          </div>
+          <div class="info-row input-container">
+            <label for="date">Date</label>
+            <input type="date" name="date" value="" disabled />
+          </div>
+          <div class="info-row">
+            <div class="input-container">
+              <label for="start">Start</label>
+              <input type="time" name="date" value="" step="600" disabled />
+            </div>
+            <div class="input-container">
+              <label for="end">End</label>
+              <input type="time" name="end" value="" step="600" disabled />
+            </div>
+          </div>
+          <div class="info-row input-container">
+            <label for="description">Description</label>
+            <textarea
+              name="description"
+              value=""
+              placeholder="Workshop description"
+              row="10"
+              disabled
+            ></textarea>
+          </div>
+        </form>
+      </section>
+      <section class="bookings-section">
+        <h2>Bookings</h2>
+        <section class="detail-container bookings-list">
+          <div class="booking-row">
+            <p>Jacques Adhi</p>
+            <button type="button">
+              <img src="../assets/x.circle.svg" alt="Cancel button" />
+            </button>
+          </div>
+          <div class="booking-row">
+            <p>Jacques Adhi</p>
+            <button type="button">
+              <img src="../assets/x.circle.svg" alt="Cancel button" />
+            </button>
+          </div>
+          <div class="booking-row">
+            <p>Jacques Adhi</p>
+            <button type="button">
+              <img src="../assets/x.circle.svg" alt="Cancel button" />
+            </button>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
