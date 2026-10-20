@@ -1,0 +1,161 @@
+@import "color.css";
+
+body {
+  background-color: var(--background-color);
+  font-family: Armata;
+  display: flex;
+  flex-direction: column;
+}
+
+.upper-header {
+  display: flex;
+  height: 6rem;
+  padding: 0 1.875rem;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--accent-color);
+
+  img {
+    width: 4.375rem;
+    height: 4.375rem;
+    cursor: pointer;
+  }
+}
+
+.log-out {
+  display: flex;
+  padding: 1.125rem 0;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  label {
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  img {
+    width: 1.875rem;
+    height: 1.5625rem;
+  }
+}
+
+.log-out:hover {
+  font-weight: bolder;
+}
+
+.lower-header {
+  display: flex;
+  padding: 1.875rem 1.25rem;
+  align-items: center;
+  gap: 3.125rem;
+  background: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+  color: black;
+  font-family: Armata;
+
+  img {
+    width: 2.5rem;
+    height: 1.875rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+main {
+  display: flex;
+  padding: 6.25rem 3.125rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.875rem;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
+form {
+  display: flex;
+  width: 66.625rem;
+  padding: 0.625rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  border-radius: 0.625rem;
+  background: #fff;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.form-row {
+  display: flex;
+  padding: 0.625rem;
+  align-items: center;
+  gap: 3.125rem;
+  align-self: stretch;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  flex: 1 0 0;
+
+  input,
+  select,
+  textarea {
+    display: flex;
+    min-width: 7.5rem;
+    padding: 12px 16px;
+    align-items: center;
+    align-self: stretch;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid rgba(217, 217, 217, 1);
+    font-family: Armata;
+  }
+
+  textarea {
+    resize: none;
+    height: 9.375rem;
+  }
+
+  input.error,
+  select.error,
+  textarea.error {
+    border: 1px solid var(--form-error);
+    color: var(--form-error);
+  }
+
+  .error-message {
+    color: var(--form-error);
+  }
+}
+
+main button {
+  display: flex;
+  padding: 1.875rem 3.125rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  border: 5px solid var(--accent-color);
+  border-radius: 0.9375rem;
+  background: var(--accent-color);
+  color: white;
+  text-align: center;
+  font-family: Armata;
+  font-size: 2.5rem;
+}
+main button:hover {
+  background-color: white;
+  border: 5px solid white;
+  color: var(--accent-color);
+}
+
+main button:active {
+  border-color: var(--accent-color);
+}
