@@ -1,0 +1,135 @@
+body {
+    background-color: #FFF5E5;
+    display: flex;
+    flex-direction: row;
+    margin: 0%;
+    padding: 0%;
+}
+
+aside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#F98A8A, #FFF282);
+    height: 100vh;
+    width: 60vh;
+}
+
+.my-logo {
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    color: #FF7C35;
+    font-family: Armata;
+    font-weight: 400;
+    text-align: center;
+}
+
+.login-form {
+    position: relative;
+    width: 440px;
+    padding: 40px;
+    text-align: center;
+}
+
+.my-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid;
+    padding-top: 15px;
+}
+
+.my-options {
+    display: flex;
+    font-size: 12px;
+    gap: 80px;
+    padding: 30px;
+    
+}
+
+.p1 {
+    font-family: Armata;
+    font-weight: 300;
+    display: flex;
+}
+
+.img-form {
+    display: flex;
+    vertical-align: middle;
+    gap: 15px;
+}
+
+
+input {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    border: 0;
+    font-family: Armata;
+    outline: none;
+}
+
+input[type="checkbox"] {
+    width: 30px;
+}
+
+input[type="email"] {
+    background-color: transparent;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-align: left;
+    transition: 0.4s;
+}
+
+input[type="password"] {
+    background-color: transparent;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-align: left;
+    transition: 0.4s;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+input[type="submit"] {
+    background-color: #FF7C35;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Armata;
+    font-size: 24px;
+    font-weight: 400;
+    width: 135px;
+    height: 35px;
+    line-height: 12px;
+    margin: 0;
+    outline: none;
+    padding: 12px 18px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+}
+
+.msg-password {
+font-family: Armata;
+font-size: 14px;
+font-weight: bolder;
+display: flex;
+align-items: center;
+justify-content: center;
+color:orangered;
+}
+
+
+main {
+    display: inline-block;
+    align-self: center;
+}
