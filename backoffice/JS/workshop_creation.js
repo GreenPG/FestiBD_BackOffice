@@ -10,8 +10,6 @@ const descriptionContainer = document.querySelector(".description-container");
 const categorySelect = document.querySelector("select");
 const resetButton = document.querySelector(".reset");
 
-const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
-
 async function fetchCategories() {
   try {
     const response = await fetch("http://localhost:8081/categories", {
@@ -119,7 +117,7 @@ async function sendCreateWorkshopRequest() {
       form.end.valueAsDate.getUTCSeconds(),
     );
 
-    const response = await fetch("http://localhost:8081/workshops", {
+    const response = await fetch("http://localhost:8081/workshops/search", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
