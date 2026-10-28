@@ -79,10 +79,18 @@ main {
 
 form {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.form-container,
+.success-box {
+  display: flex;
   width: 66.625rem;
   padding: 0.625rem;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 1.25rem;
   border-radius: 0.625rem;
   background: #fff;
@@ -91,10 +99,22 @@ form {
 
 .form-row {
   display: flex;
+  flex-direction: column;
   padding: 0.625rem;
-  align-items: center;
-  gap: 3.125rem;
+  align-items: stretch;
+  gap: 5px;
   align-self: stretch;
+}
+
+.form-row.double {
+  flex-direction: row;
+  gap: 50px;
+}
+
+.timing-container {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
 }
 
 .input-container {
@@ -137,17 +157,19 @@ form {
 
 main button {
   display: flex;
-  padding: 1.875rem 3.125rem;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.625rem;
   border: 5px solid var(--accent-color);
   border-radius: 0.9375rem;
   background: var(--accent-color);
   color: white;
   text-align: center;
   font-family: Armata;
+}
+
+.create-button {
+  padding: 1.875rem 3.125rem;
+  width: fit-content;
   font-size: 2.5rem;
 }
 main button:hover {
@@ -158,4 +180,34 @@ main button:hover {
 
 main button:active {
   border-color: var(--accent-color);
+}
+
+.error {
+  color: red;
+}
+
+.form-container .error {
+  font-size: 0.8rem;
+}
+
+.success-box {
+  justify-content: center;
+  height: 30rem;
+  gap: 5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+.success-box div {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+}
+
+.go-to-new-workshop,
+.go-to-dashboard {
+  font-size: 1.2rem;
+  padding: 1rem 1rem;
 }
