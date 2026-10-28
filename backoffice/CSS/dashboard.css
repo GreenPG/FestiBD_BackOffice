@@ -151,6 +151,7 @@ main  {
   align-items: center;
   gap: 10px;
   transition: 0.2s ease;
+  text-decoration: none;
 
   img {
     width: 25px;

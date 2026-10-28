@@ -11,6 +11,7 @@
       type="image/x-icon"
       href="../assets/logo-256x256.ico"
     />
+    <script src="../JS/workshop_creation.js" defer></script>
   </head>
   <body>
     <header>
@@ -25,52 +26,87 @@
         </section>
       </section>
       <section class="lower-header">
-         <button type="button">
+        <button type="button">
           <img src="../assets/arrow.left.svg" alt="Back button" />
         </button>
-          <h1>New Workshop</h1>
+        <h1>New Workshop</h1>
       </section>
       <main>
-        <form>
-            <div class="form-row input-container">
-                <label for="name">Name</label>
-                <input type="text" name="name" value="" placeholder"Workshop name" required>
+        <form name="newWorkshop">
+          <div class="form-container">
+            <div class="form-row input-container name-container">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                name="name"
+                value=""
+                placeholder="Workshop name"
+                required
+              />
+            </div>
+            <div class="form-row double">
+              <div class="input-container category-container">
+                <label for="category">Category</label>
+                <select name="category">
+                  <option value="">Select a category</option>
+                </select>
+              </div>
+              <div class="input-container capacity-container">
+                <label for="capacity">Capacity</label>
+                <input
+                  type="number"
+                  name="capacity"
+                  value=""
+                  placeholder="Workshop capacity"
+                  min="0"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-row input-container date-container">
+              <label for="date">Date</label>
+              <input
+                type="date"
+                name="date"
+                value=""
+                min="2026-09-13"
+                max="2026-09-15"
+                required
+              />
             </div>
             <div class="form-row">
+              <div class="timing-container">
                 <div class="input-container">
-                    <label for="category">Category</label>
-                    <select name="category">
-                        <option value="">Select a category</option>
-                    </select>
+                  <label for="start">Start</label>
+                  <input
+                    type="time"
+                    name="start"
+                    value=""
+                    step="600"
+                    required
+                  />
                 </div>
                 <div class="input-container">
-                    <label for="capacity">Capacity</label>
-                    <input type="number" name="capacity" value="" placeholder"Workshop capacity" min="0" required>
+                  <label for="end">End</label>
+                  <input type="time" name="end" value="" step="600" required />
                 </div>
-            </div>
-            <div class="form-row input-container">
-                <label for="date">Date</label>
-                <input type="date" name="date" value=""  required>
+              </div>
             </div>
             <div class="form-row">
-                <div class="input-container">
-                    <label for="start">Start</label>
-                    <input type="time" name="start" value="" step="600" required>
-                </div> 
-                <div class="input-container">
-                    <label for="end">End</label>
-                    <input type="time" name="end" value="" step="600" required>
-                </div> 
+              <div class="input-container description-container">
+                <label for="description">Description</label>
+                <textarea
+                  name="description"
+                  rows=""
+                  cols=""
+                  placeholder="Enter workshop description"
+                  required
+                ></textarea>
+              </div>
             </div>
-            <div class="form-row">
-                <div class="input-container">
-                    <label for="description">Description</label> 
-                    <textarea rows="" cols="" placeholder="Enter workshop description" required></textarea>
-                </div>
-            </div>
+          </div>
+          <button type="submit" class="create-button">Create</button>
         </form>
-
-        <button type="submit">Create</button>
       </main>
     </header>
   </body>
