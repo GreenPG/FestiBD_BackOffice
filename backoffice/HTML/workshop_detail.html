@@ -11,6 +11,7 @@
       type="image/x-icon"
       href="../assets/logo-256x256.ico"
     />
+    <script src="../JS/workshop_detail.js" type="module" defer></script>
   </head>
   <body>
     <header>
@@ -25,18 +26,18 @@
         </section>
       </section>
       <section class="lower-header">
-        <button type="button">
+        <button class="back-button" type="button">
           <img src="../assets/arrow.left.svg" alt="Back button" />
         </button>
-        <h1>Drawing A Storyboard</h1>
+        <h1></h1>
       </section>
     </header>
     <main>
       <section class="info-section">
         <h2>Infos</h2>
-        <form class="detail-container">
+        <form class="detail-container" name="workshop">
           <div class="form-header">
-            <button type="button">
+            <button class="edit-button" type="button">
               <img src="../assets/pencil.line.svg" alt="Edit button" />
               <p>Edit</p>
             </button>
@@ -62,12 +63,28 @@
           </div>
           <div class="info-row input-container">
             <label for="date">Date</label>
-            <input type="date" name="date" value="" disabled />
+            <input
+              class="date"
+              type="date"
+              name="date"
+              value=""
+              min="2026-09-13"
+              max="2026-09-15"
+              disabled
+            />
           </div>
           <div class="info-row">
             <div class="input-container">
               <label for="start">Start</label>
-              <input type="time" name="date" value="" step="600" disabled />
+              <input
+                type="time"
+                name="start"
+                value=""
+                step="600"
+                min="8:00"
+                max="20:00"
+                disabled
+              />
             </div>
             <div class="input-container">
               <label for="end">End</label>
@@ -84,30 +101,13 @@
               disabled
             ></textarea>
           </div>
+          <button class="confirm-button" type="button" disabled>Confirm</button>
+          <p class="modification-message"></p>
         </form>
       </section>
       <section class="bookings-section">
         <h2>Bookings</h2>
-        <section class="detail-container bookings-list">
-          <div class="booking-row">
-            <p>Jacques Adhi</p>
-            <button type="button">
-              <img src="../assets/x.circle.svg" alt="Cancel button" />
-            </button>
-          </div>
-          <div class="booking-row">
-            <p>Jacques Adhi</p>
-            <button type="button">
-              <img src="../assets/x.circle.svg" alt="Cancel button" />
-            </button>
-          </div>
-          <div class="booking-row">
-            <p>Jacques Adhi</p>
-            <button type="button">
-              <img src="../assets/x.circle.svg" alt="Cancel button" />
-            </button>
-          </div>
-        </section>
+        <section class="detail-container bookings-list"></section>
       </section>
     </main>
   </body>
