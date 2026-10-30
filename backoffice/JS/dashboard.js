@@ -2,12 +2,12 @@ import { getJWT, capitalize, getSiblings } from "./utils.js";
 
 const tableBody = document.querySelector(".table-container tbody");
 const days = document.querySelector(".days");
+const prevDayButton = document.querySelector(".prev-day");
+const nextDayButton = document.querySelector(".next-day");
 
 async function fetchWorkshops() {
   try {
     tableBody.innerHTML = "";
-    console.log("yalla");
-    console.log(getDate());
     const response = await fetch(
       `http://localhost:8081/workshops/search?date=${getDate()}`,
       {
@@ -41,6 +41,7 @@ async function fetchWorkshops() {
       let category = document.createElement("td");
       category.textContent = capitalize(workshop.category_name);
       let start = document.createElement("td");
+
       start.textContent = new Date(workshop.startTime).toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
@@ -61,6 +62,10 @@ async function fetchWorkshops() {
       newRow.appendChild(end);
       newRow.appendChild(capacity);
       newRow.appendChild(bookings);
+      newRow.id = workshop.id;
+      newRow.addEventListener("click", (e) => {
+        goToWorkshopDetail(e);
+      });
       tableBody.appendChild(newRow);
     });
   } catch (e) {
@@ -81,8 +86,11 @@ function getDate() {
   }
 }
 
-console.log(days);
-console.log(days.children);
+function goToWorkshopDetail(event) {
+  let workshopID = event.currentTarget.id;
+  document.location = `workshop_detail.html#${workshopID}`;
+}
+
 for (let i = 0; i < days.children.length; i++) {
   days.children[i].addEventListener("click", () => {
     days.children[i].classList.add("selected");
@@ -91,4 +99,29 @@ for (let i = 0; i < days.children.length; i++) {
     fetchWorkshops();
   });
 }
+
+prevDayButton.addEventListener("click", () => {
+  if (days.children[1].classList.contains("selected")) {
+    days.children[0].classList.add("selected");
+    days.children[1].classList.remove("selected");
+    fetchWorkshops();
+  } else if (days.children[2].classList.contains("selected")) {
+    days.children[1].classList.add("selected");
+    days.children[2].classList.remove("selected");
+    fetchWorkshops();
+  }
+});
+
+nextDayButton.addEventListener("click", () => {
+  if (days.children[0].classList.contains("selected")) {
+    days.children[1].classList.add("selected");
+    days.children[0].classList.remove("selected");
+    fetchWorkshops();
+  } else if (days.children[1].classList.contains("selected")) {
+    days.children[2].classList.add("selected");
+    days.children[1].classList.remove("selected");
+    fetchWorkshops();
+  }
+});
+
 fetchWorkshops();

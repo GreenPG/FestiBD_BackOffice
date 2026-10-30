@@ -92,10 +92,11 @@ main {
 
 .detail-container,
 .bookings-list {
-  height: 35rem;
+  height: 40rem;
 }
 
-.detail-container {
+.detail-container,
+.delete-box {
   display: flex;
   padding: 1.25rem 3.25rem;
   flex-direction: column;
@@ -109,13 +110,15 @@ main {
 .form-header {
   display: flex;
   padding: 0.625rem 0;
-  justify-content: flex-end;
+  justify-content: space-between;
+
   align-self: stretch;
 
   button {
     display: flex;
     width: fit-content;
     align-items: center;
+    cursor: pointer;
     gap: 0.625rem;
 
     img {
@@ -133,6 +136,10 @@ main {
       letter-spacing: 0.025rem;
     }
   }
+}
+
+.delete-button:disabled {
+  visibility: hidden;
 }
 
 .info-row {
@@ -173,6 +180,31 @@ main {
   }
 }
 
+.confirm-button {
+  background-color: var(--accent-color);
+  color: white;
+  border-radius: 15px;
+  border: 5px solid var(--accent-color);
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+.confirm-button:hover {
+  background-color: white;
+  color: var(--accent-color);
+  border: 5px solid white;
+  cursor: pointer;
+}
+
+.confirm-button:active {
+  border-color: var(--accent-color);
+}
+
+.confirm-button:disabled {
+  visibility: hidden;
+}
+
 .bookings-list {
   padding: 1.25rem;
   align-items: flex-start;
@@ -191,4 +223,59 @@ main {
     width: 1.25rem;
     height: 1.25rem;
   }
+}
+
+.booking-row:hover {
+  background: var(--accent-color-transparent);
+}
+
+.booking-row img:hover  {
+  cursor: pointer;
+}
+
+.modification-message {
+  font-size: 0.8rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
+  visibility: hidden;
+}
+
+.modification-message.success {
+  color: green;
+  visibility: visible;
+}
+
+.modification-message.failed {
+  color: red;
+  visibility: visible;
+}
+
+.delete-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-box h2 {
+  font-size: 2rem;
+}
+
+.go-to-dashboard {
+  border: 5px solid var(--accent-color);
+  background: var(--accent-color);
+  border-radius: 0.9375rem;
+  color: white;
+  padding: 0.5rem;
+  transition: 0.2s ease;
+}
+
+.go-to-dashboard:hover {
+  background: white;
+  border: 5px solid white;
+  color: var(--accent-color);
+}
+
+.go-to-dashboard:active {
+  background: white;
+  border: 5px solid var(--accent-color);
+  color: var(--accent-color);
 }
