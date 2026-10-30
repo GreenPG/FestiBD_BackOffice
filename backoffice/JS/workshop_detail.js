@@ -6,6 +6,7 @@ const title = document.querySelector("h1");
 const categoriesSelector = document.querySelector("select");
 const backButton = document.querySelector(".back-button");
 const editButton = document.querySelector(".edit-button");
+const deleteButton = document.querySelector(".delete-button");
 const confirmButton = document.querySelector(".confirm-button");
 const modificationMessage = document.querySelector(".modification-message");
 const ws_id = document.URL.split("#")[1];
@@ -112,12 +113,14 @@ function toggleEditButton() {
     editButton.children[0].src = "../assets/x.circle.orange.svg";
     editButton.children[1].textContent = "Cancel";
     editButton.addEventListener("click", cancelEditListener, { once: true });
+    deleteButton.disabled = true;
     confirmButton.disabled = false;
     isButtonEdit = false;
   } else {
     editButton.children[0].src = "../assets/pencil.line.svg";
     editButton.children[1].textContent = "Edit";
     editButton.addEventListener("click", editListener, { once: true });
+    deleteButton.disabled = false;
     isButtonEdit = true;
     confirmButton.disabled = true;
   }
@@ -195,14 +198,6 @@ function updateForm(newData) {
 
 const pad = (n) => String(n).padStart(2, 0);
 
-let isButtonEdit = true;
-let backupWorkshop;
-editButton.addEventListener("click", editListener, { once: true });
-confirmButton.addEventListener("click", updateWorkshop);
-backButton.addEventListener("click", () => {
-  document.location = "dashboard.html";
-});
-
 async function cancelButtonListener(e) {
   try {
     const reservationID = e.currentTarget.id;
@@ -236,6 +231,58 @@ function removeReservation(id) {
     }
   }
 }
+
+async function deleteWorkshop() {
+  try {
+    console.log("in delete");
+    const response = await fetch(`http://localhost:8081/workshops/${ws_id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${getJWT()}`,
+      },
+    });
+    if (!response.ok) {
+      console.log(response);
+      const data = response.json();
+      throw new Error(data.reason);
+    }
+    displayDeleteContent();
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function displayDeleteContent() {
+  let deleteMessage = document.createElement("h2");
+  deleteMessage.textContent = "Workshop successfully deleted";
+
+  let goToDashboardButton = document.createElement("button");
+  goToDashboardButton.textContent = "Go To Dashboard";
+  goToDashboardButton.classList.add("go-to-dashboard");
+  goToDashboardButton.addEventListener("click", () => {
+    document.location = "dashboard.html";
+  });
+
+  let deleteBox = document.createElement("div");
+  deleteBox.classList.add("delete-box");
+  deleteBox.appendChild(deleteMessage);
+  deleteBox.appendChild(goToDashboardButton);
+  document.querySelector("main").innerHTML = "";
+  document.querySelector("main").appendChild(deleteBox);
+}
+
+deleteButton.addEventListener("click", () => {
+  if (window.confirm("Are you sure you want to delete this workshop ?"))
+    deleteWorkshop();
+});
+
+let isButtonEdit = true;
+let backupWorkshop;
+editButton.addEventListener("click", editListener, { once: true });
+confirmButton.addEventListener("click", updateWorkshop);
+backButton.addEventListener("click", () => {
+  document.location = "dashboard.html";
+});
 
 await initCategories();
 await fetchWorkshop();

@@ -192,12 +192,7 @@ function displaySuccess() {
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   resetErrorMessages();
-  if (
-    !checkName() ||
-    !checkCategory() ||
-    !checkDate() ||
-    !checkTimings() //||
-  ) {
+  if (!checkName() || !checkCategory() || !checkDate() || !checkTimings()) {
     return;
   }
   await sendCreateWorkshopRequest();
