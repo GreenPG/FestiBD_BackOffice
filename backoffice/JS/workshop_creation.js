@@ -1,6 +1,7 @@
+import { getJWT, fetchCategories, capitalize } from "./utils.js";
+
 const form = document.forms.newWorkshop;
 const formElement = document.querySelector("form");
-const createButton = document.querySelector(".create-button");
 const nameContainer = document.querySelector(".name-container");
 const categoryContainer = document.querySelector(".category-container");
 const capacityContainer = document.querySelector(".capacity-container");
@@ -8,25 +9,12 @@ const dateContainer = document.querySelector(".date-container");
 const timingsContainer = document.querySelector(".timing-container");
 const descriptionContainer = document.querySelector(".description-container");
 const categorySelect = document.querySelector("select");
-const resetButton = document.querySelector(".reset");
+const backButton = document.querySelector(".back-button");
 
-async function fetchCategories() {
+async function initCategories() {
   try {
-    const response = await fetch("http://localhost:8081/categories", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${getJWT()}`,
-      },
-    });
-
-    if (!response.ok) {
-      let data = response.json();
-      throw new Error(`${data.reason}`);
-    }
-
-    const data = await response.json();
-
-    data.forEach((category) => {
+    const categories = await fetchCategories();
+    categories.forEach((category) => {
       let newOption = document.createElement("option");
       newOption.textContent = capitalize(category.name);
       newOption.value = category.id;
@@ -96,7 +84,8 @@ function checkTimings() {
     let errorMessage = document.createElement("p");
     errorMessage.textContent = "End time must be greater start time";
     errorMessage.classList.add("error");
-    timingsContainer.appendChild(errorMessage);
+    console.log(timingsContainer);
+    timingsContainer.parentElement.appendChild(errorMessage);
     return false;
   }
   return true;
@@ -105,19 +94,19 @@ function checkTimings() {
 async function sendCreateWorkshopRequest() {
   try {
     let startDate = new Date(form.date.valueAsDate);
-    startDate.setUTCHours(
-      form.start.valueAsDate.getUTCHours(),
-      form.start.valueAsDate.getUTCMinutes(),
-      form.start.valueAsDate.getUTCSeconds(),
+    startDate.setHours(
+      form.start.valueAsDate.getHours(),
+      form.start.valueAsDate.getMinutes(),
+      form.start.valueAsDate.getSeconds(),
     );
     let endDate = new Date(form.date.valueAsDate);
-    endDate.setUTCHours(
-      form.end.valueAsDate.getUTCHours(),
-      form.end.valueAsDate.getUTCMinutes(),
-      form.end.valueAsDate.getUTCSeconds(),
+    endDate.setHours(
+      form.end.valueAsDate.getHours(),
+      form.end.valueAsDate.getMinutes(),
+      form.end.valueAsDate.getSeconds(),
     );
 
-    const response = await fetch("http://localhost:8081/workshops/search", {
+    const response = await fetch("http://localhost:8081/workshops", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -143,39 +132,27 @@ async function sendCreateWorkshopRequest() {
   }
 }
 
-function getJWT() {
-  let token = "";
-  const cookies = document.cookie.split(";");
-  cookies.forEach((cookie) => {
-    let splittedCookie = cookie.split("=");
-    if (splittedCookie[0] === "jwttoken") {
-      token = splittedCookie[1];
-    }
-  });
-  return token;
-}
-
 function resetErrorMessages() {
   if (nameContainer.children.length === 3) {
-    nameContainer.children.pop();
+    nameContainer.removeChild(categoryContainer.children[2]);
   }
   if (categoryContainer.children.length === 3) {
-    categoryContainer.children.pop();
+    categoryContainer.removeChild(categoryContainer.children[2]);
   }
   if (capacityContainer.children.length === 3) {
-    capacityContainer.children.pop();
+    capacityContainer.removeChild(categoryContainer.children[2]);
   }
   if (dateContainer.children.length === 3) {
-    dateContainer.children.pop();
+    dateContainer.removeChild(categoryContainer.children[2]);
   }
   if (timingsContainer.children.length === 3) {
-    timingsContainer.children.pop();
+    timingsContainer.removeChild(categoryContainer.children[2]);
   }
   if (descriptionContainer.children.length === 3) {
-    descriptionContainer.children[2].remove();
+    descriptionContainer.removeChild(categoryContainer.children[2]);
   }
   if (formElement.children.length === 3) {
-    formElement.children[2].remove();
+    formElement.removeChild(categoryContainer.children[2]);
   }
 }
 
@@ -227,4 +204,8 @@ form.addEventListener("submit", async (e) => {
   displaySuccess();
 });
 
-fetchCategories();
+backButton.addEventListener("click", () => {
+  document.location = "../HTML/dashboard.html";
+});
+
+initCategories();

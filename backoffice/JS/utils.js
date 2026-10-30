@@ -1,3 +1,25 @@
+export async function fetchCategories() {
+  try {
+    const response = await fetch("http://localhost:8081/categories", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${getJWT()}`,
+      },
+    });
+
+    if (!response.ok) {
+      let data = response.json();
+      throw new Error(`${data.reason}`);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (e) {
+    throw e;
+  }
+}
+
 export function getJWT() {
   let token = "";
   const cookies = document.cookie.split(";");
