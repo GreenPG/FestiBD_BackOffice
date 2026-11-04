@@ -25,7 +25,7 @@ form.addEventListener("submit", async (e) => {
 
 async function loginAdmin(email, password) {
   try {
-    const response = await fetch("http://localhost:8081/users/login", {
+    const response = await fetch("http://localhost:8081/users/staff/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
