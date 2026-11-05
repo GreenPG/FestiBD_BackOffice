@@ -1,8 +1,8 @@
 const form = document.querySelector("#login-form");
 const email = document.querySelector("#email-form");
 const password = document.querySelector("#password-form");
-const button = document.querySelector("#login-btn");
 const message = document.querySelector("#message-password");
+const passwordToggler = document.querySelector(".password-toggle");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -15,8 +15,7 @@ form.addEventListener("submit", async (e) => {
       const token = await loginAdmin(email.value, password.value);
       document.cookie = `jwttoken=${token}`;
 
-      console.log(document.cookie);
-      document.location.assign("dashboard.html");
+      document.location.assign("HTML/dashboard.html");
     } catch (error) {
       message.textContent = `Login failed : ${error.message}`;
       message.classList.add("erreur");
@@ -26,7 +25,7 @@ form.addEventListener("submit", async (e) => {
 
 async function loginAdmin(email, password) {
   try {
-    const response = await fetch("http://localhost:8081/users/login", {
+    const response = await fetch("http://localhost:8081/users/staff/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,3 +44,13 @@ async function loginAdmin(email, password) {
     throw e;
   }
 }
+
+passwordToggler.addEventListener("click", () => {
+  if (password.type === "password") {
+    password.setAttribute("type", "text");
+    passwordToggler.src = "../assets/eye.slash.fill.svg";
+  } else {
+    password.setAttribute("type", "password");
+    passwordToggler.src = "../assets/eye.fill.svg";
+  }
+});
