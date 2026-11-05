@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="..." />
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../assets/logo-256x256.ico"
+    />
+    <script src="../JS/login.js" type="module" defer></script>
+    <title>FestiBD Access</title>
+  </head>
+
+  <body>
+    <aside>
+      <img src="../assets/3.png" width="200" height="200" class="my-logo" />
+    </aside>
+    <main>
+      <h1>Login As Admin User</h1>
+      <form class="login-form" id="login-form">
+        <section class="input-section">
+          <div class="img-container">
+            <img
+              src="../assets/envelope.fill.svg"
+              width="20"
+              height="16"
+              class="img-form"
+            />
+          </div>
+          <input type="email" id="email-form" placeholder="E-mail" required />
+        </section>
+        <p id="message-email"></p>
+        <section class="input-section">
+          <div class="img-container">
+            <img
+              src="../assets/lock.fill.svg"
+              width="20"
+              height="23"
+              class="img-form"
+            />
+          </div>
+          <input
+            type="password"
+            id="password-form"
+            placeholder="Password"
+            minlength="8"
+            required
+          />
+          <img
+            class="password-toggle"
+            src="../assets/eye.fill.svg"
+            width="20"
+            height="16"
+          />
+        </section>
+
+        <section class="my-options">
+          <p class="p1">
+            <input type="checkbox" id="remember-me" />Remember me
+          </p>
+        </section>
+        <div class="button-container">
+          <input type="submit" id="login-btn" value="Login" />
+        </div>
+      </form>
+      <p class="msg-password" id="message-password"></p>
+    </main>
+
+    <footer></footer>
+  </body>
+</html>
+
