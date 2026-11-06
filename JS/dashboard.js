@@ -77,12 +77,12 @@ function getDate() {
   const selectedDate = document.querySelector(".selected");
 
   switch (selectedDate.textContent.split(" ")[1]) {
-    case "13/09":
-      return "2026-09-13T00:00:00Z";
-    case "14/09":
-      return "2026-09-14T00:00:00Z";
-    case "15/09":
-      return "2026-09-15T00:00:00Z";
+    case "13/11":
+      return "2026-11-13T00:00:00Z";
+    case "14/11":
+      return "2026-11-14T00:00:00Z";
+    case "15/11":
+      return "2026-11-15T00:00:00Z";
   }
 }
 
